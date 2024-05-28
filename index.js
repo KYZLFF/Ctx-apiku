@@ -31,7 +31,7 @@ app.set("json spaces", 2);
 // Middleware untuk CORS
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/auth-db', {
+mongoose.connect('mongodb+srv://ziooedt:1X8f2irfPsl6h7qv@cluster0.ci8ipzw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
