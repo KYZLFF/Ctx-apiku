@@ -1,0 +1,296 @@
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+  
+  
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bookman+Old+Style:wght@400&display=swap">
+    
+    
+    
+    
+    
+    
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+   
+
+
+
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://cdn.btch.bz/file/bf883f6c6704e63fd4e37.jpg">
+    <title>CasteriX API's</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+      body {
+          font-family: 'Roboto', sans-serif;
+        background: url('https://telegra.ph/file/f4d8cc679246f7a28c7c5.jpg') no-repeat center center fixed; 
+            background-size: cover;
+        color: #333;
+        margin: 0;
+        background-color: black;
+        padding: 0;
+      }
+
+      .container-h {
+        width: 100%;
+        padding: 0%;
+        box-shadow: 0 0 1%(0, 0, 0, 0.1);
+        backdrop-filter: blur(1, 5rem);
+      }
+
+      .loading {
+        display: flex
+      }
+
+      h1 {
+        color: #4B0082;
+        text-align: center;
+        text-shadow: 1px 1px 1px violet;
+      }
+      
+ h9 {
+        color: #4B0082;
+       font-family: "Courier New", Courier, monospace;
+        text-shadow: 1px 1px 1px violet;
+        text-align: center;
+        padding: 0 20px; 
+      }
+      
+      .copyright.h4 {
+        margin: 0, 20px, 1px, 0;
+      }
+
+      h2 {
+        color: #343a40;
+        margin-top: 20px;
+        margin-right: 100px;
+        position: static;
+        margin-bottom: 20px;
+        text-align: auto;
+      }
+
+
+
+
+
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+   
+
+.side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 13px;
+    color: #818181;
+    display: block;
+    font-family: "Courier New", Courier, monospace; 
+    transition: 0.3s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0,3);
+}
+
+.side-menu a:hover {
+    color: #f1f1f1;
+}
+
+.side-menu .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+
+
+ c11 {
+color: #650F8A;
+            text-align: static;
+            font-family: 'Pacifico', cursive;
+font-size: 40px;
+background: linear-gradient(45deg, #FF3CAC, #784BA0, #2B86C5); /* Warna gradien */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Tambahkan shadow pada teks */
+    
+}
+
+      p {
+            line-height: 1.6;
+            color: white;
+            text-align: static;
+            font-family: "Trirong", serif;
+            font-size: 0.575em; /* Perkecil ukuran teks */
+            padding: 0 20px; /* Tambahkan padding kiri dan kanan */
+            max-width: 800px; /* Batasi lebar maksimum teks */
+            margin: 10px auto 0;
+            text-shadow: 3px 3px 4px rgba(0, 0, 0, 1.8); /* Tambahkan shadow pada teks */
+        }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+        color: #333333;
+      }
+
+      pre {
+        background-color: #f0f6ff;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+
+      .btn-container {
+        margin: 20px 20px 30px 20px;
+        border-radius: 50%;
+      }
+
+      .btn {
+        display: block;
+        width: calc(100% - 40px);
+        margin: 0 auto 8px;
+        background-color: #6600CC;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 13px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #6600CC;
+      }
+
+      input[type="checkbox"] {
+        position: relative;
+        width: 40px;
+        height: 20px;
+        appearance: none;
+        background-color: #434343;
+        outline: none;
+        border-radius: 10px;
+        transision: .5s ease;
+        cursor: pointer;
+      }
+
+      input[type="checkbox"]:checked {
+        background-color: #3664ffd;
+      }
+
+      input[type="checkbox"]::before {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background-color: #fcfcfc;
+        border-radius: 50%;
+        top: 2px;
+        left: 2px;
+      }
+
+      input[type="checkbox"]:checked::before {
+        transform: translateX(20px);
+      }
+
+      .dark {
+        background-color: #999999;
+        color: #33ffff;
+      }
+
+      @keyframes bounce {
+
+        25%,
+        25%,
+        25% {
+          transform: scale(0);
+        }
+
+        80% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-l">
+      <div class="loading">
+        <div class="dot-one"></div>
+        <div class="dot-two"></div>
+        <div class="dot-three"></div>
+      </div class="btn-container">
+      <c11>CasteriX Api • Docs</c11> 
+    
+        <div class="container">
+        <div class="container-h">
+          <h1>Artificial Intelegence</h1>
+          <div class="btn-container">
+            <a href="/api/ragbot?message=hai" class="btn">RagBot Ai</a>
+            <a href="/api/gptai?message=hai ngab" class="btn">GPT-Ai</a>
+            <a href="/api/degreeguru?message=hai" class="btn">Degreeguru ai</a>
+            <a href="/api/pinecone?message=hai" class="btn">Pinecone Aio</a>
+            <a href="/api/smartcontract?message=hai" class="btn">Smartcontract Ai</a>
+            <a href="/api/blackboxAIChat?message=hai" class="btn">BlackBox Ai</a>
+            <a href="/api/cai?query=hai&id=3Lln4tP_SbI46QrFwvs4Y4GhqgZTIwPASYCxfPykeRA" class="btn">Character Ai</a>
+          </div>
+        </div>
+        
+            <div class="col-md-6 py-3">
+          <div class="testi-content">
+            <p></p>
+            <div class="entry-footer"></div>
+          </div>
+          <div class="container-h">
+            <h1>in development</h1>
+            <div class="btn-container">
+              <a href="/api/ragbot?message=hai" class="btn">coming soom</a>
+              <script>
+                function ubahMode() {
+                  const ubah = document.body;
+                  ubah.classList.toggle("dark");
+                }
+                function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    if (menu.style.width === "250px") {
+        menu.style.width = "0";
+    } else {
+        menu.style.width = "250px";
+    }
+}
+
+              </script>
+  </body>
+</html>
