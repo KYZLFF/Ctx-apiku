@@ -15,7 +15,7 @@ const baseUrl = 'https://tools.betabotz.org';
 const https = require('https');
 const mongoose = require('mongoose');
 const app = express();
-const port = 3000;
+
 
 const clean = e => (e = e.replace(/(<br?\s?\/>)/gi, " \n")).replace(/(<([^>] )>)/gi, "");
 
@@ -48,50 +48,6 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-// Middleware untuk parse JSON data
-app.use(express.json());
-
-// Endpoint untuk login
-app.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-
-    try {
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(401).json({ message: 'Pengguna tidak ditemukan' });
-        }
-
-        const isMatch = await user.comparePassword(password);
-        if (!isMatch) {
-            return res.status(401).json({ message: 'Kata sandi salah' });
-        }
-
-        // Berikan token JWT jika login berhasil
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
-        res.json({ token });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Internal server error' });
-    }
-});
-
-// Endpoint untuk register
-app.post('/register', async (req, res) => {
-    const { email, password } = req.body;
-
-    try {
-        const user = new User({ email, password });
-        await user.save();
-        res.status(201).json({ message: 'Pengguna berhasil didaftarkan' });
-    } catch (error) {
-        console.error(error);
-        if (error.code === 11000) {
-            res.status(400).json({ message: 'Email sudah digunakan' });
-        } else {
-            res.status(500).json({ message: 'Internal server error' });
-        }
-    }
-});
 
 
 
