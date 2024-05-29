@@ -13,7 +13,6 @@ const { HttpsProxyAgent } = require('https-proxy-agent');
 const httpsAgent = new HttpsProxyAgent('http://168.63.76.32:3128');
 const baseUrl = 'https://tools.betabotz.org';
 const https = require('https');
-const mongoose = require('mongoose');
 
 
 const clean = e => (e = e.replace(/(<br?\s?\/>)/gi, " \n")).replace(/(<([^>] )>)/gi, "");
