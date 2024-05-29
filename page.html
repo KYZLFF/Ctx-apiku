@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caterix Api Login</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Mencegah pengguliran di semua perangkat */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://telegra.ph/file/f4d8cc679246f7a28c7c5.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white; /* Warna teks putih */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 400px; /* Tambahkan padding untuk memastikan margin pada perangkat kecil */
+            box-sizing: border-box; /* Pastikan padding tidak menambah ukuran elemen */
+        }
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress {
+            width: 0%;
+            height: 100%;
+            background-color: #8a2be2; /* Warna ungu */
+            transition: width 0.3s ease;
+        }
+        .casterix-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .loading-container, .login-container {
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            background-color: rgba(0, 0, 0, 0.7); /* Tambahkan latar belakang transparan */
+        }
+        .loading-container.hidden, .login-container.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .login-container {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: white; /* Warna teks putih */
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+            color: white; /* Warna teks putih */
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid;
+            border-radius: 3px;
+            background-color: #202020; /* Warna kotak input */
+            color: white; /* Warna teks di dalam kotak input */
+            border-image: linear-gradient(45deg, #FF3CAC, #784BA0, #2B86C5) 1; /* Stroke warna-warni */
+        }
+        .login-container input[type="submit"] {
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            font-size: 16px;
+            width: 100%;
+        }
+        .login-container input[type="submit"]:hover {
+            filter: brightness(90%);
+        }
+        .colorful-button {
+            background: linear-gradient(45deg, #FF3CAC, #784BA0, #2B86C5);
+            background-size: 300%;
+            animation: gradientShift 3s ease infinite;
+        }
+        @keyframes gradientShift {
+            0% {
+                background-position: 0%;
+            }
+            50% {
+                background-position: 100%;
+            }
+            100% {
+                background-position: 0%;
+            }
+        }
+        .footer {
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: #A0A0A0; /* Warna teks putih */
+            width: 100%;
+            background-color: #202020;
+            position: fixed; /* Buat footer tetap di bawah */
+            bottom: 0;
+        }
+        .register-link {
+            color: white; /* Warna teks putih */
+            font-size: 14px;
+            text-align: center;
+            margin-top: 15px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .register-link a {
+            color: #FF00FF; /* Warna link */
+            text-decoration: none;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loading-container">
+            <h2 id="loading-text">Loading...</h2>
+            <div class="progress-bar">
+                <div class="progress" id="progress-bar"></div>
+            </div>
+        </div>
+        <div class="login-container hidden" id="login-container">
+            <h2>Welcome To Caterix API</h2>
+            <form action="/docs" method="post">
+                <label for="username">Apikey</label>
+                <input type="text" id="username" name="username" required>
+                <input type="submit" value="Login" class="colorful-button">
+            </form>
+            <div class="register-link">
+                Don't have an account? Click <a href="#">Register</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Copyright © 2024 By Zio Offc
+    </div>
+    <script>
+        function generateRandomString(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            const charactersLength = characters.length;
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+
+        function showLoadingText() {
+            const loadingText = document.getElementById('loading-text');
+            const progressBar = document.getElementById('progress-bar');
+            const loadingContainer = document.querySelector('.loading-container');
+            const loginContainer = document.getElementById('login-container');
+            const targetText = 'CASTERIX';
+            let currentLength = 0;
+
+            function updateLoadingText() {
+                if (currentLength < targetText.length) {
+                    loadingText.textContent = generateRandomString(currentLength + 1);
+                    progressBar.style.width = ((currentLength + 1) / targetText.length) * 100 + '%';
+                    currentLength++;
+                    setTimeout(() => {
+                        requestAnimationFrame(updateLoadingText);
+                    }, 100); // Penundaan 100ms untuk memperlambat animasi
+                } else {
+                    loadingText.textContent = targetText;
+                    progressBar.style.width = '100%';
+                    setTimeout(() => {
+                        loadingContainer.classList.add('hidden');
+                        loginContainer.style.display = 'flex';
+                        setTimeout(() => {
+                            loginContainer.classList.remove('hidden');
+                        }, 10); // Ensure display change before removing hidden class
+                    }, 1000); // Tampilkan form login setelah 1 detik
+                }
+            }
+
+            requestAnimationFrame(updateLoadingText);
+        }
+
+        window.onload = showLoadingText;
+    </script>
+</body>
+</html>
