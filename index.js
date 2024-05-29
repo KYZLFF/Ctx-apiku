@@ -14,7 +14,6 @@ const httpsAgent = new HttpsProxyAgent('http://168.63.76.32:3128');
 const baseUrl = 'https://tools.betabotz.org';
 const https = require('https');
 const mongoose = require('mongoose');
-const app = express();
 
 
 const clean = e => (e = e.replace(/(<br?\s?\/>)/gi, " \n")).replace(/(<([^>] )>)/gi, "");
@@ -31,22 +30,30 @@ app.set("json spaces", 2);
 // Middleware untuk CORS
 app.use(cors());
 
-mongoose.connect('mongodb+srv://ziooedt:1X8f2irfPsl6h7qv@cluster0.ci8ipzw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => console.log('Connected to MongoDB database!'));
 
-// Schema untuk pengguna
-const userSchema = new mongoose.Schema({
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true }
-});
 
-const User = mongoose.model('User', userSchema);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
