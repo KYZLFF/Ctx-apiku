@@ -834,7 +834,11 @@ app.get('/api/tiktokdl', async (req, res) => {
 
 // Endpoint untuk servis dokumen HTML
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'page.html'));
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'page4.html'));
 });
 
 app.get('/docs', (req, res) => {
